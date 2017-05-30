@@ -1,0 +1,74 @@
+<?php
+$this->headTitle("Moviments per Compte");
+
+$this->mainMenu()->setActiveItemId('moviment');
+
+$this->pageBreadcrumbs()->setItems([
+            $this->translate("Inici")=>$this->url('home'),
+            $this->translate("Moviments per compte")=>$this->url('moviment'),
+            ]);
+
+//missatge per comfirmar esborrar
+$msg_delete = addslashes($this->translate("N'està segur?"));
+?>
+
+<h1><?= $this->translate("Moviment per Compte") ?></h1>
+
+<ul class="nav nav-tabs" id="myTab">
+    <?php foreach ($caixes as $caixa): 
+		if ($caixa->getCodi() == $codiB) { $class = "active"; } else { $class = ""; }
+		?>
+		<li class="<?= $class ?>">
+			<a href="<?= $this->url('llista', ['action'=>'llistaxcompte', 'codiB'=>$caixa->getCodi()]); ?>">
+				<?= $this->escapeHtml($caixa->getNom()) ?>
+			</a>
+		</li>
+    <?php endforeach; ?>   
+</ul>
+
+<p>
+<a class="btn btn-default" href="<?= $this->url('moviment', ['action'=>'add','id'=>0, 'codiB'=>$codiB]); ?>">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	<?= $this->translate("Nou Moviment") ?>
+</a>
+</p>
+<table class="table table-sm table-striped">
+
+   <tr>
+        <th><?= $this->translate("Data") ?></th>
+        <th><?= $this->translate("Compte") ?></th>        
+        <th><?= $this->translate("Concepte") ?></th>
+        <th><?= $this->translate("Responsable") ?></th>
+        <th style="text-align: right"><?= $this->translate("Import") ?></th>
+        <th style="text-align: right"><?= $this->translate("Saldo") ?></th>
+        <th><?= $this->translate("Accions") ?></th>        
+    </tr>
+    
+    <?php foreach ($moviments as $moviment): ?>
+    
+    <tr>
+        <td><?= $this->dateFormat($moviment['dia']); ?></td>
+        <td><?= $this->escapeHtml($moviment['cte']); ?></td>
+        <td><?= $this->escapeHtml($moviment['concepte']); ?></td>
+        <td><?= $this->escapeHtml($moviment['responsable']); ?></td>
+        <td style="text-align: right"><?= $moviment['signe'] ?><?= $this->currencyFormat($moviment['import']); ?></td>
+        <td style="text-align: right"><?= $this->currencyFormat($moviment['saldo']); ?></td>
+        <td>
+            <a class="btn btn-info btn-xs" href="<?= $this->url('moviment', 
+                    ['action'=>'edit', 'id'=>$moviment['id'], 'codiB'=>$codiB]); ?>">
+                <span class="glyphicon glyphicon-pencil" ></span>
+				<?= $this->translate("Editar") ?>
+            </a>
+            <a class="btn btn-danger btn-xs" href="<?= $this->url('moviment', 
+                    ['action'=>'delete', 'id'=>$moviment['id'], 'codiB'=>$codiB]); ?>"
+					onclick="if (confirm('<?= $msg_delete ?>')) {
+						document.location = this.href; } return false;">
+                <span class="glyphicon glyphicon-remove" ></span>
+				<?= $this->translate("Eliminar") ?>
+            </a>
+        </td>    
+    </tr>
+        
+    <?php endforeach; ?>   
+    
+</table>

@@ -1,0 +1,99 @@
+<?php
+$this->headTitle($this->translate("Editar Moviment"));
+
+$this->mainMenu()->setActiveItemId('moviment');
+
+$this->pageBreadcrumbs()->setItems([
+            $this->translate("Inici")=>$this->url('home'),
+            $this->translate("Gestió de Moviments")=>$this->url('llista'),
+            $this->translate("Afegir Moviment")=>$this->url('moviment', ['action'=>'add', 'codiB'=>$codiB ])
+            ]);
+
+$form->get('data')->setAttributes([
+    'class'=>'form-control', 
+	'placeholder'=>"15/4/2017"
+    ]);
+
+$form->get('concepte')->setAttributes([
+    'class'=>'form-control', 
+	'placeholder'=>$this->translate("concept")
+    ]);
+
+$form->get('import')->setAttributes([
+    'class'=>'form-control', 
+	'placeholder'=> $this->translate("import"),
+    ]);
+
+$form->get('responsable')->setAttributes([
+    'class'=>'form-control', 
+	'placeholder'=>$this->translate("responsable")
+    ]);
+
+$form->get('codiD')->setAttributes([
+    'class'=>'form-control', 
+	'placeholder'=>$this->translate("5 digits")
+    ]);
+
+$form->get('codiH')->setAttributes([
+    'class'=>'form-control', 
+	'placeholder'=>$this->translate("5 digits")
+    ]);
+
+$form->get('submit')
+        ->setAttributes(['class'=>'btn btn-primary'])
+        ->setValue($this->translate("Crear"));
+
+$form->prepare();
+?>
+
+<h1><?= $this->translate("Afegir Moviment") ?></h1>
+
+<p>
+    <?= $this->translate("Si us plau, ompliu el formulari i feu click en el botó <i>Crear</i>"); ?>
+</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <?= $this->form()->openTag($form); ?>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('data')); ?>
+            <?= $this->formElement($form->get('data')); ?>
+            <?= $this->formElementErrors($form->get('data')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('concepte')); ?>
+            <?= $this->formElement($form->get('concepte')); ?>
+            <?= $this->formElementErrors($form->get('concepte')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('import')); ?>
+            <?= $this->formElement($form->get('import')); ?>
+            <?= $this->formElementErrors($form->get('import')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('responsable')); ?>
+            <?= $this->formElement($form->get('responsable')); ?>
+            <?= $this->formElementErrors($form->get('responsable')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('codiD')); ?>
+            <?= $this->formElement($form->get('codiD')); ?>
+            <?= $this->formElementErrors($form->get('codiD')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('codiH')); ?>
+            <?= $this->formElement($form->get('codiH')); ?>
+            <?= $this->formElementErrors($form->get('codiH')); ?>                  
+        </div>
+        
+        <?= $this->formElement($form->get('submit')); ?>
+        
+        <?= $this->form()->closeTag(); ?>
+    </div>    
+</div>   

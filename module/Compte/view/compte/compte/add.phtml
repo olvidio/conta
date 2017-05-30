@@ -1,0 +1,96 @@
+<?php
+$this->headTitle($this->translate("Afegir Compte"));
+
+$this->mainMenu()->setActiveItemId('comptes');
+
+$this->pageBreadcrumbs()->setItems([
+            'Home'=>$this->url('home'),
+            'Manage Comptes'=>$this->url('comptes'),
+            'Add Compte'=>$this->url('comptes', ['action'=>'add'])
+            ]);
+
+$form->get('codi')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>$this->translate("5 digits")
+    ]);
+
+$form->get('nom')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>$this->translate("Nom del compte")
+    ]);
+
+$form->get('explicacio')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=> $this->translate("Nom llarg"),
+    ]);
+
+$form->get('codiAlternatiu')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>$this->translate("codi curt")
+    ]);
+
+$form->get('tipus')->setAttributes([
+    'class'=>'form-control', 
+    ]);
+
+$form->get('status')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
+
+$form->prepare();
+?>
+
+<h1><?=$this->translate("Afegir Compte") ?></h1>
+
+<p>
+    <?= $this->translate("Si us plau, ompliu el formulari i feu click en el botó <i>Crear</i>"); ?>
+</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <?= $this->form()->openTag($form); ?>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('codi')); ?>
+            <?= $this->formElement($form->get('codi')); ?>
+            <?= $this->formElementErrors($form->get('codi')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('nom')); ?>
+            <?= $this->formElement($form->get('nom')); ?>
+            <?= $this->formElementErrors($form->get('nom')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('explicacio')); ?>
+            <?= $this->formElement($form->get('explicacio')); ?>
+            <?= $this->formElementErrors($form->get('explicacio')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('codiAlternatiu')); ?>
+            <?= $this->formElement($form->get('codiAlternatiu')); ?>
+            <?= $this->formElementErrors($form->get('codiAlternatiu')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('tipus')); ?>
+            <?= $this->formElement($form->get('tipus')); ?>
+            <?= $this->formElementErrors($form->get('tipus')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('status')); ?>
+            <?= $this->formElement($form->get('status')); ?>
+            <?= $this->formElementErrors($form->get('status')); ?>                  
+        </div>
+		
+        <?= $this->formElement($form->get('submit')); ?>
+        
+        <?= $this->form()->closeTag(); ?>
+    </div>    
+</div>   
+

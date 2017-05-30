@@ -1,0 +1,57 @@
+<?php
+$this->headTitle($this->translate("Vista del Compte"));
+
+$this->mainMenu()->setActiveItemId('comptes');
+
+$this->pageBreadcrumbs()->setItems([
+            'Home'=>$this->url('home'),
+            'Manage Comptes'=>$this->url('comptes'),
+            'View Compte'=>$this->url('comptes', ['action'=>'view', 'id'=>$compte->getId()])
+            ]);
+?>
+
+
+<?= $this->flashMessenger()->render('error', ['alert', 'alert-warning']); ?>
+<?= $this->flashMessenger()->render('success', ['alert', 'alert-success']); ?>
+<?= $this->flashMessenger()->render('info', ['alert', 'alert-info']); ?>
+
+<h1>View Compte</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-striped table-bordered">
+             <tr>
+                <th>ID:</th>
+                <td><?= $this->escapeHtml($compte->getId()) ?></td>
+            </tr>
+            <tr>
+                <th>Codi:</th>
+                <td><?= $this->escapeHtml($compte->getCodi()) ?></td>
+            </tr>
+            <tr>
+                <th>Nom:</th>
+                <td><?= $this->escapeHtml($compte->getNom()) ?></td>
+            </tr>
+            <tr>
+                <th>Explicació:</th>
+                <td><?= $this->escapeHtml($compte->getExplicacio()) ?></td>
+            </tr>
+            <tr>
+                <th>Tipus:</th>
+                <td><?= $this->escapeHtml($compte->getTipusAsString()) ?></td>
+            </tr>
+            <tr>
+                <th>Codi Alternatiu:</th>
+                <td><?= $this->escapeHtml($compte->getCodiAlternatiu()) ?></td>
+            </tr>
+            <tr>
+                <th>Date Created:</th>
+                <td><?= $this->escapeHtml($compte->getDateCreated()->format('d/m/Y')) ?></td>
+            </tr>
+            <tr>
+                <th>Status:</th>
+                <td><?= $this->escapeHtml($compte->getStatusAsString()) ?></td>
+            </tr>
+        </table>
+    </div>
+</div>
