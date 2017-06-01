@@ -83,7 +83,7 @@ class NavManager
                     [
                         'id' => 'comptes',
                         'label' => $this->translate("múltiple"),
-                        'link' => $url('comptes')
+                        'link' => $url('comptes', ['persona'=>'g'])
                     ],
                     [
                         'id' => 'importar',
@@ -103,9 +103,14 @@ class NavManager
                         'link' => $url('users')
                     ],
                     [
-                        'id' => 'comptes',
-                        'label' => $this->translate("Gestió de Comptes"),
-                        'link' => $url('comptes')
+                        'id' => 'comptesg',
+                        'label' => $this->translate("Gestió de Comptes generals"),
+                        'link' => $url('comptes', ['persona'=>'g'])
+                    ],
+                    [
+                        'id' => 'comptesp',
+                        'label' => $this->translate("Gestió de Comptes personals"),
+                        'link' => $url('comptes', ['persona'=>'dsa'])
                     ]
                 ]
             ];

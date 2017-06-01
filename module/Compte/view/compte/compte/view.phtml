@@ -5,7 +5,7 @@ $this->mainMenu()->setActiveItemId('comptes');
 
 $this->pageBreadcrumbs()->setItems([
             'Home'=>$this->url('home'),
-            'Manage Comptes'=>$this->url('comptes'),
+            'Manage Comptes'=>$this->url('comptes', ['persona'=> $this->persona]),
             'View Compte'=>$this->url('comptes', ['action'=>'view', 'id'=>$compte->getId()])
             ]);
 ?>

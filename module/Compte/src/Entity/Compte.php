@@ -19,66 +19,64 @@ class Compte
     const STATUS_ACTIVE       = 1; // Active.
     const STATUS_RETIRED      = 2; // Retired.
 	
-    /**
+	/**
      * @var integer
      *
-     * @ORM\Column(name="codi", type="integer", precision=0, scale=0, nullable=false, unique=false)
-     * @ORM\Id
+     * @ORM\Column(name="codi", type="integer", nullable=false)
      */
     private $codi;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="comptes_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="text", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="nom", type="text", nullable=false)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="explicacio", type="text", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="explicacio", type="text", nullable=true)
      */
     private $explicacio;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="codi_alternatiu", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="codi_alternatiu", type="integer", nullable=true)
      */
     private $codiAlternatiu;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tipus", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="tipus", type="integer", nullable=false)
      */
     private $tipus;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="status", type="integer", nullable=false)
      */
     private $status;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_created", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="date_created", type="datetime", nullable=false)
      */
     private $dateCreated;
-
-
+	
     /**
      * Get codi
      *

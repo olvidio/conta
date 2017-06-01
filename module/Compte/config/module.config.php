@@ -11,12 +11,14 @@ return [
             'comptes' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/comptes[/:action[/:id]]',
+                    'route'    => '/comptes/:persona[/:action[/:id]]',
                     'constraints' => [
+                        'persona' => '[a-zA-Z]*',
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[a-zA-Z0-9_-]*',
                     ],
                     'defaults' => [
+                        'persona'        => 'g',
                         'controller'    => Controller\CompteController::class,
                         'action'        => 'index',
                     ],

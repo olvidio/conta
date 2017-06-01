@@ -5,7 +5,7 @@ $this->mainMenu()->setActiveItemId('comptes');
 
 $this->pageBreadcrumbs()->setItems([
             $this->translate("Inici")=>$this->url('home'),
-            $this->translate("Gestió de Comptes")=>$this->url('comptes'),
+            $this->translate("Gestió de Comptes")=>$this->url('comptes', ['persona'=> $this->persona]),
             ]);
 
 //missatge per comfirmar esborrar
@@ -15,7 +15,7 @@ $msg_delete = addslashes($this->translate("N'està segur?"));
 <h1><?= $this->translate("Gestió de Comptes") ?></h1>
 
 <p>
-<a class="btn btn-default" href="<?= $this->url('comptes', ['action'=>'add']); ?>">
+<a class="btn btn-default" href="<?= $this->url('comptes', ['persona' => $persona, 'action'=>'add']); ?>">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	<?= $this->translate("Nou Compte") ?>
 </a>
@@ -41,7 +41,7 @@ $msg_delete = addslashes($this->translate("N'està segur?"));
         <td><?= $this->escapeHtml($compte->getCodi()); ?></td>
         <td><?= $this->escapeHtml($compte->getId()); ?></td>
         <td>
-            <a href="<?= $this->url('comptes', ['action'=>'view', 'id'=>$compte->getId()]); ?>">
+            <a href="<?= $this->url('comptes', ['persona'=> $persona, 'action'=>'view', 'id'=>$compte->getId()]); ?>">
                 <?= $this->escapeHtml($compte->getNom()); ?>
             </a> 
         </td>
@@ -52,12 +52,12 @@ $msg_delete = addslashes($this->translate("N'està segur?"));
 		<td><?= $this->escapeHtml($compte->getDateCreated()->format('d/m/Y')); ?></td>
         <td>
             <a class="btn btn-info" href="<?= $this->url('comptes', 
-                    ['action'=>'edit', 'id'=>$compte->getId()]); ?>">
+                    ['persona' =>$this->persona, 'action'=>'edit', 'id'=>$compte->getId()]); ?>">
                 <span class="glyphicon glyphicon-pencil" ></span>
 				<?= $this->translate("Editar") ?>
             </a>
             <a class="btn btn-danger" href="<?= $this->url('comptes', 
-                    ['action'=>'delete', 'id'=>$compte->getId()]); ?>"
+                    ['persona' =>$this->persona, 'action'=>'delete', 'id'=>$compte->getId()]); ?>"
 					onclick="if (confirm('<?= $msg_delete ?>')) {
 						document.location = this.href; } return false;">
                 <span class="glyphicon glyphicon-remove" ></span>

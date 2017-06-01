@@ -45,16 +45,16 @@ return [
                     ],
                 ],
             ],     
-			'comptes' => [
-                'type' => Literal::class,
-                'options' => [
-                    'route'    => '/comptes[/:action]',
-                    'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'about',
-                    ],
-                ],
-            ],     
+			//'comptes' => [
+              //  'type' => Literal::class,
+               // 'options' => [
+               //     'route'    => '/comptes[/:action]',
+               //     'defaults' => [
+               //         'controller' => Controller\IndexController::class,
+               //         'action'     => 'about',
+               //     ],
+               // ],
+            //],     
         ],
     ],
     'controllers' => [

@@ -5,8 +5,8 @@ $this->mainMenu()->setActiveItemId('comptes');
 
 $this->pageBreadcrumbs()->setItems([
             'Home'=>$this->url('home'),
-            'Manage Comtes'=>$this->url('comptes'),
-            'Edit Compte'=>$this->url('comptes', ['action'=>'edit', 'id'=>$compte->getId()])
+            'Manage Comtes'=>$this->url('comptes', ['persona'=> $this->persona]),
+            'Edit Compte'=>$this->url('comptes', ['persona' =>$persona, 'action'=>'edit', 'id'=>$compte->getId()])
             ]);
 
 $form->get('codi')->setAttributes([

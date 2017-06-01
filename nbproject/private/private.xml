@@ -3,10 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/dani/conta/module/Moviment/view/moviment/moviment/edit.phtml</file>
-            <file>file:/home/dani/conta/module/Application/view/layout/layout.phtml</file>
-            <file>file:/home/dani/conta/module/Moviment/config/module.config.php</file>
-            <file>file:/home/dani/conta/module/Moviment/view/moviment/moviment/llistaxcompte.phtml</file>
+            <file>file:/home/dani/conta/module/Compte/src/Controller/Factory/CompteControllerFactory.php</file>
+            <file>file:/home/dani/conta/module/Compte/view/compte/compte/add.phtml</file>
+            <file>file:/home/dani/conta/module/Compte/view/compte/compte/edit.phtml</file>
+            <file>file:/home/dani/conta/module/Compte/view/compte/compte/index.phtml</file>
+            <file>file:/home/dani/conta/module/Compte/view/compte/compte/view.phtml</file>
+            <file>file:/home/dani/conta/module/Compte/src/Entity/Compte.php</file>
+            <file>file:/home/dani/conta/module/Compte/src/Controller/CompteController.php</file>
+            <file>file:/home/dani/conta/module/Application/config/module.config.php</file>
+            <file>file:/home/dani/conta/module/Compte/config/module.config.php</file>
+            <file>file:/home/dani/conta/module/Compte/src/Service/CompteManager.php</file>
             <file>file:/home/dani/conta/module/Application/src/Service/NavManager.php</file>
         </group>
     </open-files>

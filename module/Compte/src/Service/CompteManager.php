@@ -17,7 +17,7 @@ class CompteManager
     /**
      * Constructs the service.
      */
-    public function __construct($entityManager) 
+    public function __construct($entityManager)
     {
         $this->entityManager = $entityManager;
     }
@@ -31,7 +31,7 @@ class CompteManager
         if($this->checkCompteExists($data['codi'])) {
             throw new \Exception("Compte with codi " . $data['$codi'] . " already exists");
         }
-        
+		
         // Create new Compte entity.
         $compte = new Compte();
         $compte->setCodi($data['codi']);
@@ -62,7 +62,7 @@ class CompteManager
         if($compte->getCodi()!=$data['codi'] && $this->checkCompteExists($data['codi'])) {
             throw new \Exception("Another compte with codi " . $data['codi'] . " already exists");
         }
-        
+		
         $compte->setCodi($data['codi']);
         $compte->setNom($data['nom']);
         $compte->setExplicacio($data['explicacio']);
@@ -93,7 +93,7 @@ class CompteManager
      * Checks whether an active compte with given Codi already exists in the database.     
      */
     public function checkCompteExists($codi) {
-        
+		
         $compte = $this->entityManager->getRepository(Compte::class)
                 ->findOneByCodi($codi);
         

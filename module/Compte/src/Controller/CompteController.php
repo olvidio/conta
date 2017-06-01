@@ -40,6 +40,8 @@ class CompteController extends AbstractActionController
      */
     public function indexAction() 
     {
+        $persona = (string)$this->params()->fromRoute('persona', 'g');
+		
         $comptes = $this->entityManager->getRepository(Compte::class)
                 ->findBy([], ['id'=>'ASC']);
 		
@@ -47,6 +49,7 @@ class CompteController extends AbstractActionController
 		//$translatedString = $this->dtranslate()->xtranslate("Nom");
 		//echo $translatedString;
 		return new ViewModel([
+            'persona' => $persona,
             'comptes' => $comptes
         ]);
     } 
@@ -56,6 +59,7 @@ class CompteController extends AbstractActionController
      */
     public function addAction()
     {
+        $persona = (string)$this->params()->fromRoute('persona', 'g');
         // Create compte form
         $form = new CompteForm('create', $this->entityManager);
         
@@ -78,11 +82,14 @@ class CompteController extends AbstractActionController
                 
                 // Redirect to "view" page
                 return $this->redirect()->toRoute('comptes', 
-                        ['action'=>'view', 'id'=>$compte->getId()]);                
+                        ['persona'=>$persona,
+                        'action'=>'view',
+						'id'=>$compte->getId()]);                
             }               
         } 
         
         return new ViewModel([
+				'persona' => $persona,
                 'form' => $form
             ]);
     }
@@ -92,6 +99,7 @@ class CompteController extends AbstractActionController
      */
     public function viewAction() 
     {
+        $persona = (string)$this->params()->fromRoute('persona', 'g');
         $id = (int)$this->params()->fromRoute('id', -1);
         if ($id<1) {
             $this->getResponse()->setStatusCode(404);
@@ -108,6 +116,7 @@ class CompteController extends AbstractActionController
         }
                 
         return new ViewModel([
+            'persona' => $persona,
             'compte' => $comptes[0]
         ]);
     }
@@ -117,6 +126,7 @@ class CompteController extends AbstractActionController
      */
     public function editAction() 
     {
+        $persona = (string)$this->params()->fromRoute('persona', 'g');
         $id = (int)$this->params()->fromRoute('id', -1);
         if ($id<1) {
             $this->getResponse()->setStatusCode(404);
@@ -150,12 +160,15 @@ class CompteController extends AbstractActionController
                 // Get filtered and validated data
                 $data = $form->getData();
                 
+				$data['persona'] = $persona;
                 // Update the compte.
                 $this->compteManager->updateCompte($compte, $data);
                 
                 // Redirect to "view" page
                 return $this->redirect()->toRoute('comptes', 
-                        ['action'=>'view', 'id'=>$compte->getId()]);                
+                        ['persona'=>$persona,
+                        'action'=>'view',
+						'id'=>$compte->getId()]);                
             }               
         } else {
             $form->setData(array(
@@ -169,6 +182,7 @@ class CompteController extends AbstractActionController
         }
         
         return new ViewModel(array(
+            'persona' => $persona,
             'compte' => $compte,
             'form' => $form
         ));
@@ -179,6 +193,7 @@ class CompteController extends AbstractActionController
      */
     public function deleteAction() 
     {
+        $persona = (string)$this->params()->fromRoute('persona', 'g');
         $id = (int)$this->params()->fromRoute('id', -1);
         if ($id<1) {
             $this->getResponse()->setStatusCode(404);
@@ -200,7 +215,7 @@ class CompteController extends AbstractActionController
 		$this->compteManager->deleteCompte($compte);
 		
         // Redirect to Index
-		return $this->redirect()->toRoute('comptes', ['action'=>'index']);
+		return $this->redirect()->toRoute('comptes', ['persona' => $persona, 'action'=>'index']);
     }
     
     
@@ -211,6 +226,7 @@ class CompteController extends AbstractActionController
      */
     public function messageAction() 
     {
+        $persona = (string)$this->params()->fromRoute('persona', 'g');
         // Get message ID from route.
         $id = (string)$this->params()->fromRoute('id');
         
@@ -221,6 +237,7 @@ class CompteController extends AbstractActionController
         }
         
         return new ViewModel([
+			'persona' => $persona,
             'id' => $id
         ]);
     }
